@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arturo Rangel Coronado — Ingeniero Desarrollador de Software e Sistemas</title>
+<title>Arturo Rangel Coronado — Ingeniero en Sistemas</title>
 <meta name="description" content="Portafolio / CV de Arturo Rangel Coronado. Soporte técnico, administración de sistemas y desarrollo de software a la medida.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -358,6 +358,133 @@ h1.headline .accent{ color:var(--coral); }
 footer{ padding:100px 0 140px; text-align:center; }
 footer p{ color:rgba(255,255,255,0.65); font-size:12.5px; font-family:var(--font-mono); }
 
+
+/* ---------------- AJUSTE RESPONSIVO GLOBAL ---------------- */
+html,body{max-width:100%;overflow-x:hidden;}
+body{min-width:280px;}
+section[id]{scroll-margin-top:64px;}
+.wrap{width:100%;padding-left:clamp(14px,4vw,24px);padding-right:clamp(14px,4vw,24px);}
+.window,.window-bar,.window-title,.addr-bar,.desktop-grid>*,.project-body>*,.profile-photo-body>*,.contact-method,.tech-item,.edu-card{min-width:0;}
+.window-title,.addr-bar,.cm-value,.profile-photo-copy p,.project-info p,.project-info .role,.log-entry,.console-body .line{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.window-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.project-info,.perfil-body,.finder-body,.chat-body,.log-body,.edu-body,.console-body{max-width:100%;}
+@media (max-width:1100px){
+  #clock{display:none;}
+  .menu-items{gap:14px;}
+  .menu-items a{font-size:12.5px;}
+  .hire-pill{padding:5px 9px;font-size:0;gap:5px;}
+  .hire-pill::after{content:"Disponible";font-size:10.5px;line-height:1;font-family:var(--font-mono);}
+  .sticky-note{position:static;transform:rotate(-1deg);margin-top:24px;width:auto;}
+}
+
+@media (max-width:1024px){
+  .desktop{padding-top:104px;}
+  .desktop-grid{gap:28px;}
+}
+
+@media (max-width:900px){
+  .finder-grid[style*="grid-template-columns"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+
+@media (max-width:820px){
+  .menubar-inner{gap:14px;}
+  .menubar-right{margin-left:auto;}
+  .desktop{padding-top:92px;padding-bottom:72px;}
+  .desktop-grid{gap:24px;}
+  .project-body{grid-template-columns:1fr;}
+  .project-visual{min-height:180px;}
+  .profile-photo-body{grid-template-columns:1fr;}
+  .profile-photo-frame{width:min(100%,320px);margin:0 auto;}
+  .profile-photo-copy{text-align:center;}
+  .profile-photo-copy .tag-list{justify-content:center;}
+  .value-grid,.benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .contact-methods{grid-template-columns:1fr;}
+}
+
+@media (max-width:640px){
+  .menubar-inner{height:44px;padding-left:14px;padding-right:14px;gap:10px;}
+  .menubar-brand{font-size:13px;}
+  .hire-pill{padding:5px 8px;font-size:0;gap:5px;}
+  .hire-pill::after{content:"Disponible";font-size:10px;line-height:1;font-family:var(--font-mono);}
+  section{padding:50px 0;}
+  .desktop{padding-top:80px;padding-bottom:58px;}
+  h1.headline{font-size:clamp(28px,9vw,38px);line-height:1.08;}
+  .hero-copy{font-size:15px;line-height:1.6;}
+  .cta-row{display:grid;grid-template-columns:1fr;width:100%;}
+  .cta-row .btn{width:100%;justify-content:center;text-align:center;}
+  .window{border-radius:12px;}
+  .window-bar{padding:9px 11px;gap:8px;}
+  .traffic{gap:5px;}
+  .traffic span{width:9px;height:9px;}
+  .window-title{margin-right:0;font-size:10.5px;text-align:left;}
+  .win-browser .window-bar{gap:8px;}
+  .addr-bar{padding:5px 8px;font-size:10px;}
+  .console-body,.finder-body,.perfil-body,.profile-photo-body,.project-info,.project-visual,.chat-body,.log-body,.edu-body{
+    padding:20px;
+  }
+  .console-body{font-size:11.5px;line-height:1.55;min-height:0;}
+  .section-head{margin-bottom:24px;}
+  .section-head h2{font-size:clamp(21px,7vw,28px);overflow-wrap:anywhere;}
+  .section-head p{font-size:14px;line-height:1.55;}
+  .eyebrow{font-size:10.5px;letter-spacing:.1em;}
+  .sticky-note{margin-top:18px;padding:14px;}
+  .profile-photo-body{gap:20px;}
+  .profile-photo-copy h3{font-size:26px;}
+  .profile-photo-copy p{font-size:14px;line-height:1.55;}
+  .finder-grid,
+  .finder-grid[style*="grid-template-columns"],
+  .value-grid,.solution-grid,.benefit-grid,.tech-grid,.contact-methods,.edu-body{
+    grid-template-columns:1fr !important;
+  }
+  .stat-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .folder-card,.value-card,.solution-card,.benefit-card,.tech-item,.edu-card,.stat-box{padding:15px;}
+  .project-visual{min-height:0;padding:18px;}
+  .project-info{padding:22px 20px;}
+  .project-info h3{font-size:18px;}
+  .project-info p.desc{font-size:13.5px;line-height:1.55;}
+  .project-links{display:grid;grid-template-columns:1fr;}
+  .link-chip{justify-content:center;text-align:center;}
+  .log-entry{padding-left:16px;}
+  .log-entry ul{padding-left:16px;font-size:11.8px;}
+  .log-entry h3{font-size:13.5px;line-height:1.4;}
+  .chat-body .cta-row{margin-bottom:18px !important;}
+  .bubble{max-width:100%;font-size:13.5px;line-height:1.55;}
+  .contact-method{align-items:flex-start;}
+  .cm-value{font-size:12.5px;}
+  .checklist{columns:1;padding-left:0;}
+  .checklist li{font-size:13px;line-height:1.45;}
+  .ideal-box{padding:18px 16px;}
+  footer{padding:70px 16px 120px;}
+  .dock-wrap{bottom:max(8px,env(safe-area-inset-bottom));padding:0 8px;}
+  .dock{gap:3px;padding:6px;max-width:calc(100vw - 16px);border-radius:16px;}
+  .dock a{width:clamp(31px,9.5vw,36px);height:clamp(31px,9.5vw,36px);border-radius:10px;flex:0 0 auto;}
+  .dock a svg{width:16px;height:16px;}
+  .dock-sep{margin:4px 1px;}
+}
+
+@media (max-width:390px){
+  .menubar-brand{font-size:12px;}
+  .hire-pill::after{content:"Libre";font-size:9.5px;}
+  .desktop{padding-top:74px;}
+  .stat-row{grid-template-columns:1fr;}
+  .profile-photo-frame{width:min(100%,280px);}
+  .perfil-body,.finder-body,.profile-photo-body,.project-info,.project-visual,.chat-body,.log-body,.edu-body,.console-body{padding:16px;}
+  .dock{gap:2px;padding:5px;}
+  .dock a{width:29px;height:29px;}
+  .dock a svg{width:14px;height:14px;}
+}
+
+@media (orientation:landscape) and (max-height:520px){
+  .dock-wrap{bottom:6px;}
+  .dock{padding:4px;}
+  .dock a{width:30px;height:30px;}
+  .desktop{padding-top:72px;}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
   .console-body .line{ opacity:1 !important; }
@@ -408,12 +535,12 @@ footer p{ color:rgba(255,255,255,0.65); font-size:12.5px; font-family:var(--font
   <section class="desktop wrap">
     <div class="desktop-grid">
       <div>
-        <div class="eyebrow">Ingeniero Desarrollador de software e Sistemas· Monterrey, N.L.</div>
+        <div class="eyebrow">Ingeniero en Sistemas · Monterrey, N.L.</div>
         <h1 class="headline">Soporte técnico de día.<br>Sistemas <span class="accent">que construyo</span> de fondo.</h1>
         <p class="hero-copy">+3 años resolviendo tickets, redes y servidores en producción — y la misma experiencia desarrollando el software que ese soporte técnico termina necesitando. Este portafolio funciona como mi CV: toda mi experiencia, habilidades y proyectos reales, listos para revisión.</p>
         <div class="cta-row">
           <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-          <a href="#" class="btn btn-glass" onclick="window.print(); return false;">Descargar CV (PDF)</a>
+          <a href="/cv.arturorangelcoronado.sistemas" class="btn btn-glass" onclick="window.print(); return false;">Descargar CV (PDF)</a>
         </div>
       </div>
 
@@ -460,7 +587,7 @@ footer p{ color:rgba(255,255,255,0.65); font-size:12.5px; font-family:var(--font
       <div class="profile-photo-body">
         <!-- Coloca tu fotografía en la misma carpeta del HTML con el nombre: foto-arturo.jpg -->
         <div class="profile-photo-frame">
-          <img src="foto.PNG" alt="Fotografía profesional de Arturo Rangel Coronado">
+          <img src="foto.PNG" alt="Fotografía profesional de Arturo Rangel Coronado" onerror="this.style.display='none'">
           <div class="profile-photo-placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
             <strong>Coloca aquí tu fotografía</strong>
