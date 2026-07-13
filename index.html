@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arturo Rangel Coronado — Ingeniero Desarrollador de Software e Sistemas</title>
+<meta name="description" content="Portafolio / CV de Arturo Rangel Coronado. Soporte técnico, administración de sistemas y desarrollo de software a la medida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12161c;
+  --paper:#f3f5f7;
+  --paper-2:#e7ebee;
+  --paper-line:#d7dde2;
+  --paper-ink:#1b2026;
+  --paper-dim:#5c6670;
+  --term-bg:#12161c;
+  --term-line:#232b33;
+  --term-text:#d6dee4;
+  --term-dim:#6f7d88;
+  --ok:#4fd1a5;
+  --amber:#ffb85c;
+  --coral:#ff6b4a;
+  --white:#ffffff;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --maxw:1160px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; font-family:var(--font-body); color:var(--paper-ink);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display); margin:0; letter-spacing:-.01em;}
+p{margin:0;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+:focus-visible{outline:2px solid var(--coral); outline-offset:3px; border-radius:6px;}
+::selection{background:var(--coral); color:#fff;}
+
+/* ---------------- WALLPAPER ---------------- */
+.wallpaper{
+  position:fixed; inset:0; z-index:-1;
+  background:
+    radial-gradient(1100px 700px at 12% -10%, #3d2b7a 0%, transparent 55%),
+    radial-gradient(1000px 800px at 90% 10%, #0f6e70 0%, transparent 55%),
+    radial-gradient(1200px 900px at 50% 120%, #ff8b6b 0%, transparent 50%),
+    linear-gradient(160deg,#1a1440 0%, #14243d 45%, #0d2f38 100%);
+}
+
+/* ---------------- MENU BAR ---------------- */
+.menubar{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  background:rgba(255,255,255,0.72); backdrop-filter:blur(16px) saturate(1.3);
+  border-bottom:1px solid rgba(255,255,255,0.5);
+}
+.menubar-inner{
+  max-width:var(--maxw); margin:0 auto; padding:0 24px; height:46px;
+  display:flex; align-items:center; gap:24px;
+}
+.menubar-brand{
+  display:flex; align-items:center; gap:8px; font-family:var(--font-display);
+  font-weight:700; font-size:14px; color:var(--paper-ink); text-decoration:none; white-space:nowrap;
+}
+.menubar-brand .dot{width:9px;height:9px;border-radius:3px;background:var(--coral);}
+.menu-items{ display:flex; gap:20px; flex:1; }
+.menu-items a{
+  font-size:13px; font-weight:500; color:#3a4249; text-decoration:none; padding:4px 2px;
+  border-bottom:2px solid transparent; transition:color .15s ease, border-color .15s ease;
+}
+.menu-items a:hover, .menu-items a.active{ color:var(--paper-ink); border-color:var(--coral); }
+.menubar-right{ display:flex; align-items:center; gap:14px; font-family:var(--font-mono); font-size:12px; color:#3a4249; }
+.hire-pill{
+  display:flex; align-items:center; gap:6px; background:rgba(79,209,165,0.16);
+  border:1px solid rgba(79,209,165,0.4); color:#0d6b52; padding:5px 11px; border-radius:100px; font-weight:600;
+  white-space:nowrap;
+}
+.hire-dot{width:6px;height:6px;border-radius:50%;background:var(--ok); animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@media (max-width:820px){ .menu-items{display:none;} #clock{display:none;} }
+
+/* ---------------- DOCK ---------------- */
+.dock-wrap{ position:fixed; bottom:16px; left:0; right:0; z-index:60; display:flex; justify-content:center; pointer-events:none; }
+.dock{
+  pointer-events:auto; display:flex; gap:6px; padding:8px; border-radius:20px;
+  background:rgba(255,255,255,0.6); backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(255,255,255,0.5); box-shadow:0 16px 40px -12px rgba(0,0,0,0.35);
+}
+.dock a{
+  width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  color:#2a323a; text-decoration:none; transition:transform .15s ease, background .15s ease; position:relative;
+}
+.dock a:hover{ transform:translateY(-4px); background:rgba(255,255,255,0.7); }
+.dock a svg{ width:20px; height:20px; }
+.dock a.cv-btn{ background:var(--coral); color:#fff; }
+.dock a.cv-btn:hover{ background:#ff7f61; }
+.dock-sep{ width:1px; align-self:stretch; background:rgba(0,0,0,0.12); margin:6px 2px; }
+@media (max-width:600px){ .dock a{ width:38px;height:38px; } .dock a svg{width:17px;height:17px;} }
+
+/* ---------------- GENERIC WINDOW CHROME ---------------- */
+.window{ border-radius:14px; overflow:hidden; box-shadow:0 30px 70px -30px rgba(0,0,0,0.55); }
+.window-bar{ display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.traffic{ display:flex; gap:7px; flex-shrink:0; }
+.traffic span{ width:11px; height:11px; border-radius:50%; display:block; }
+.traffic .c{background:#ff5f57;} .traffic .m{background:#febc2e;} .traffic .z{background:#28c840;}
+.window-title{ font-family:var(--font-mono); font-size:12px; flex:1; text-align:center; margin-right:38px; }
+
+.win-terminal{ background:var(--term-bg); }
+.win-terminal .window-bar{ background:#191f26; border-bottom:1px solid var(--term-line); }
+.win-terminal .window-title{ color:var(--term-dim); }
+
+.win-light{ background:var(--paper); }
+.win-light .window-bar{ background:var(--paper-2); border-bottom:1px solid var(--paper-line); }
+.win-light .window-title{ color:var(--paper-dim); }
+
+.win-browser .window-bar{ background:var(--paper-2); border-bottom:1px solid var(--paper-line); gap:12px; }
+.addr-bar{
+  flex:1; background:#fff; border:1px solid var(--paper-line); border-radius:8px;
+  padding:5px 12px; font-family:var(--font-mono); font-size:11.5px; color:#4a545c;
+  display:flex; align-items:center; gap:6px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.addr-bar .lock{ color:var(--ok); }
+
+section{ padding:80px 0; }
+@media (max-width:640px){ section{ padding:56px 0; } }
+
+.eyebrow{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:#fff; opacity:.85; display:flex; align-items:center; gap:9px; margin-bottom:14px;
+}
+.eyebrow.dark{ color:var(--paper-dim); opacity:1; }
+.eyebrow::before{ content:""; width:7px; height:7px; border-radius:2px; background:var(--coral); }
+.section-head{ margin-bottom:36px; max-width:60ch; }
+.section-head h2{ font-size:clamp(22px,3vw,32px); margin-bottom:10px; color:#fff; }
+.section-head.dark h2{ color:var(--paper-ink); }
+.section-head p{ color:rgba(255,255,255,0.75); font-size:15px; }
+.section-head.dark p{ color:var(--paper-dim); }
+
+/* ---------------- DESKTOP / HERO ---------------- */
+.desktop{ padding:120px 0 100px; position:relative; }
+.desktop-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:start; }
+@media (max-width:920px){ .desktop-grid{ grid-template-columns:1fr; } }
+
+h1.headline{ font-size:clamp(30px,4.4vw,50px); color:#fff; line-height:1.1; margin-bottom:18px; }
+h1.headline .accent{ color:var(--coral); }
+.hero-copy{ color:rgba(255,255,255,0.82); font-size:16.5px; max-width:52ch; margin-bottom:28px; }
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:10px;
+  font-weight:600; font-size:14px; text-decoration:none; border:1px solid transparent; cursor:pointer;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{ transform:translateY(-1px); }
+.btn-primary{ background:var(--coral); color:#fff; }
+.btn-primary:hover{ background:#ff7f61; }
+.btn-glass{ background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.4); color:#fff; }
+.btn-glass:hover{ border-color:#fff; }
+
+.win-terminal .console-body{ padding:20px; font-family:var(--font-mono); font-size:13px; min-height:250px; }
+.console-body .line{ color:var(--term-dim); margin-bottom:7px; opacity:0; }
+.console-body .line.show{ opacity:1; }
+.console-body .ok{ color:var(--ok); }
+.console-body .prompt{ color:var(--amber); }
+.cursor{ display:inline-block; width:7px; height:14px; background:var(--ok); vertical-align:middle; animation:blink 1s step-end infinite; }
+@keyframes blink{50%{opacity:0;}}
+
+.sticky-note{
+  position:absolute; right:24px; top:56px; width:190px; transform:rotate(3deg);
+  background:#fff2a8; color:#463c12; border-radius:4px; padding:16px 16px 18px;
+  box-shadow:0 18px 30px -12px rgba(0,0,0,0.45); font-family:var(--font-mono); font-size:11.5px;
+  z-index:5;
+}
+.sticky-note h4{ font-family:var(--font-mono); font-size:11px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
+.sticky-note .snum{ font-family:var(--font-display); font-size:20px; font-weight:700; display:block; }
+.sticky-note .srow{ margin-bottom:8px; }
+@media (max-width:920px){ .sticky-note{ position:static; transform:rotate(-1deg); margin-top:24px; width:auto; } }
+
+/* ---------------- PERFIL (light window) ---------------- */
+.perfil-body{ padding:32px; font-size:15.5px; color:#2b333a; }
+.perfil-body p{ margin-bottom:16px; }
+.perfil-body strong{ color:var(--paper-ink); }
+.stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px; }
+@media (max-width:700px){ .stat-row{ grid-template-columns:repeat(2,1fr); } }
+.stat-box{ background:#fff; border:1px solid var(--paper-line); border-radius:10px; padding:14px 16px; }
+.stat-box .n{ font-family:var(--font-display); font-weight:700; font-size:22px; color:var(--coral); }
+.stat-box .l{ font-size:11.5px; color:var(--paper-dim); margin-top:2px; }
+
+
+/* ---------------- FOTO PERSONAL ---------------- */
+.profile-photo-body{
+  padding:28px; display:grid; grid-template-columns:minmax(220px,320px) 1fr;
+  gap:28px; align-items:center;
+}
+.profile-photo-frame{
+  position:relative; aspect-ratio:4/5; border-radius:14px; overflow:hidden;
+  background:linear-gradient(145deg,#e8edf1,#f9fafb); border:1px solid var(--paper-line);
+  box-shadow:0 18px 36px -24px rgba(0,0,0,.45);
+}
+.profile-photo-frame img{
+  position:absolute; inset:0; z-index:2; width:100%; height:100%; object-fit:cover;
+}
+.profile-photo-placeholder{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; padding:28px; text-align:center; color:var(--paper-dim);
+}
+.profile-photo-placeholder svg{ width:58px; height:58px; color:var(--coral); }
+.profile-photo-placeholder strong{ color:var(--paper-ink); font-family:var(--font-display); font-size:17px; }
+.profile-photo-placeholder code{
+  font-family:var(--font-mono); font-size:11.5px; color:#4a545c; background:#fff;
+  border:1px solid var(--paper-line); border-radius:7px; padding:6px 9px;
+}
+.profile-photo-copy h3{ font-size:clamp(24px,3vw,34px); margin:10px 0 8px; color:var(--paper-ink); }
+.profile-photo-copy p{ color:#3d4650; font-size:15px; line-height:1.65; margin-bottom:16px; }
+.photo-status{
+  display:inline-flex; align-items:center; gap:7px; font-family:var(--font-mono); font-size:11.5px;
+  color:#0d6b52; background:rgba(79,209,165,.13); border:1px solid rgba(79,209,165,.35);
+  border-radius:100px; padding:5px 10px;
+}
+.photo-status::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--ok); }
+@media (max-width:760px){
+  .profile-photo-body{ grid-template-columns:1fr; }
+  .profile-photo-frame{ width:min(100%,320px); margin:0 auto; }
+  .profile-photo-copy{ text-align:center; }
+  .profile-photo-copy .tag-list{ justify-content:center; }
+}
+
+/* ---------------- BLOQUES DEL CATÁLOGO DE SERVICIOS ---------------- */
+.value-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px; }
+.value-card{ background:#fff; border:1px solid var(--paper-line); border-radius:12px; padding:18px; }
+.value-code{ font-family:var(--font-mono); font-size:11px; color:var(--coral); display:block; margin-bottom:10px; }
+.value-card h3{ font-size:15px; margin-bottom:6px; color:var(--paper-ink); }
+.value-card p{ font-size:12.5px; color:var(--paper-dim); line-height:1.45; }
+.solution-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.solution-card{ background:#fff; border:1px solid var(--paper-line); border-radius:12px; padding:18px; }
+.solution-card h3{ font-size:15px; margin-bottom:7px; color:var(--paper-ink); }
+.solution-card p{ font-size:12.8px; color:var(--paper-dim); line-height:1.45; }
+.solution-card .solution-label{
+  display:inline-block; margin-bottom:10px; font-family:var(--font-mono); font-size:10.5px;
+  color:#0d7a5e; background:rgba(79,209,165,.12); border:1px solid rgba(13,122,94,.22);
+  border-radius:100px; padding:4px 8px;
+}
+.benefit-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.benefit-card{ background:#fff; border:1px solid var(--paper-line); border-radius:12px; padding:18px; text-align:center; }
+.benefit-card strong{ display:block; font-family:var(--font-display); font-size:18px; color:var(--coral); margin-bottom:5px; }
+.benefit-card span{ font-size:12.5px; color:var(--paper-dim); }
+.ideal-box{
+  margin-top:18px; background:var(--term-bg); color:#fff; border-radius:12px; padding:20px 22px;
+  text-align:center;
+}
+.ideal-box h3{ font-size:17px; margin-bottom:7px; }
+.ideal-box p{ color:var(--term-text); font-size:13px; line-height:1.55; }
+@media (max-width:900px){
+  .value-grid{ grid-template-columns:repeat(2,1fr); }
+  .benefit-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px){
+  .value-grid,.solution-grid,.benefit-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------------- SERVICIOS (finder) ---------------- */
+.finder-body{ padding:26px; }
+.finder-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:900px){ .finder-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .finder-grid{ grid-template-columns:1fr; } }
+.folder-card{ background:#fff; border:1px solid var(--paper-line); border-radius:12px; padding:18px; }
+.folder-icon{ width:34px; height:28px; margin-bottom:12px; }
+.folder-card h3{ font-size:14.5px; margin-bottom:10px; color:var(--paper-ink); }
+.tag-list{ display:flex; flex-wrap:wrap; gap:5px; }
+.tag{ font-size:11px; color:#4a545c; border:1px solid var(--paper-line); background:var(--paper); padding:3px 8px; border-radius:100px; font-family:var(--font-mono); }
+
+/* ---------------- PROYECTOS (browser windows) ---------------- */
+.project-window{ margin-bottom:22px; }
+.project-body{ background:#fff; display:grid; grid-template-columns:1fr 1.25fr; }
+@media (max-width:840px){ .project-body{ grid-template-columns:1fr; } }
+.project-visual{ background:#eef1f3; padding:26px; display:flex; align-items:center; }
+.mock-page{ width:100%; border-radius:8px; overflow:hidden; border:1px solid var(--paper-line); background:#fff; }
+.mock-hero{ height:64px; }
+.mock-content{ padding:14px; display:flex; flex-direction:column; gap:8px; }
+.mock-bar{ height:8px; border-radius:4px; background:#e5e9ec; }
+.project-info{ padding:28px 30px; }
+.project-info h3{ font-size:19px; margin-bottom:6px; color:var(--paper-ink); }
+.project-info .role{ font-family:var(--font-mono); font-size:11px; color:var(--paper-dim); display:block; margin-bottom:12px; }
+.project-info p.desc{ color:#3d4650; font-size:14.5px; margin-bottom:16px; }
+.project-links{ display:flex; flex-wrap:wrap; gap:9px; }
+.link-chip{
+  font-size:12.5px; font-weight:600; color:#0d7a5e; text-decoration:none; border:1px solid rgba(13,122,94,0.3);
+  padding:6px 12px; border-radius:8px; display:inline-flex; align-items:center; gap:5px;
+}
+.link-chip:hover{ background:rgba(13,122,94,0.08); }
+
+/* ---------------- EXPERIENCIA (terminal log) ---------------- */
+.log-body{ padding:26px; font-family:var(--font-mono); font-size:13px; color:var(--term-text); }
+.log-entry{ border-left:2px solid var(--term-line); padding:0 0 26px 20px; position:relative; }
+.log-entry:last-child{ padding-bottom:2px; }
+.log-entry::before{ content:""; position:absolute; left:-6px; top:2px; width:10px; height:10px; border-radius:50%; background:var(--ok); }
+.log-ts{ color:var(--term-dim); font-size:11.5px; }
+.log-tag{ color:var(--amber); font-weight:600; }
+.log-entry h3{ font-family:var(--font-mono); font-size:14.5px; color:#fff; margin:6px 0 3px; }
+.log-org{ color:var(--ok); font-size:12.5px; display:block; margin-bottom:10px; }
+.log-entry ul{ margin:0; padding-left:18px; color:var(--term-text); font-size:12.8px; opacity:.9; }
+.log-entry li{ margin-bottom:6px; }
+
+/* ---------------- EDUCACION ---------------- */
+.edu-body{ padding:26px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:700px){ .edu-body{ grid-template-columns:1fr; } }
+.edu-card{ background:#fff; border:1px solid var(--paper-line); border-radius:10px; padding:18px; display:flex; gap:12px; align-items:flex-start; }
+.edu-card svg{ width:22px; height:22px; color:var(--coral); flex-shrink:0; margin-top:2px; }
+.edu-card h3{ font-size:14.5px; margin-bottom:4px; color:var(--paper-ink); }
+.edu-card span{ font-size:12.5px; color:var(--paper-dim); }
+
+/* ---------------- CONTACTO (mensaje) ---------------- */
+.chat-body{ padding:28px; }
+.bubble{
+  background:#e9eef2; border-radius:16px 16px 16px 4px; padding:14px 18px; max-width:34ch;
+  font-size:14.5px; color:#2b333a; margin-bottom:22px;
+}
+.contact-methods{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+@media (max-width:700px){ .contact-methods{ grid-template-columns:1fr; } }
+.contact-method{
+  display:flex; align-items:center; gap:11px; text-decoration:none; padding:13px 14px;
+  border:1px solid var(--paper-line); border-radius:10px; background:#fff; transition:border-color .15s ease;
+}
+.contact-method:hover{ border-color:var(--coral); }
+.cm-icon{ width:32px; height:32px; border-radius:8px; background:var(--paper); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.cm-icon svg{ width:16px; height:16px; color:var(--coral); }
+.cm-label{ font-size:11px; color:var(--paper-dim); }
+.cm-value{ font-size:13.5px; font-weight:600; color:var(--paper-ink); }
+
+/* ---------------- TECNOLOGÍA (badges) ---------------- */
+.tech-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media (max-width:900px){ .tech-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:600px){ .tech-grid{ grid-template-columns:repeat(2,1fr); } }
+.tech-item{ background:#fff; border:1px solid var(--paper-line); border-radius:12px; padding:14px; display:flex; gap:11px; align-items:flex-start; }
+.tech-badge{
+  width:38px; height:38px; border-radius:9px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-weight:700; font-size:10.5px; color:#fff; letter-spacing:-.02em;
+}
+.tech-item h4{ font-family:var(--font-body); font-weight:600; font-size:13px; margin-bottom:2px; color:var(--paper-ink); }
+.tech-item p{ font-size:11.5px; color:var(--paper-dim); line-height:1.35; }
+
+/* ---------------- CATÁLOGO checklist ---------------- */
+.checklist{ columns:2; column-gap:28px; }
+@media (max-width:700px){ .checklist{ columns:1; } }
+.checklist li{ break-inside:avoid; list-style:none; display:flex; gap:9px; margin-bottom:11px; font-size:13.5px; color:#3d4650; }
+.checklist li::before{ content:"✓"; color:var(--ok); font-weight:700; flex-shrink:0; }
+
+/* ---------------- PIPELINE (proceso) ---------------- */
+.pipeline-step{ color:var(--term-dim); margin-bottom:9px; }
+.pipeline-step .n{ color:var(--amber); }
+.pipeline-step .k{ color:#fff; font-weight:600; }
+.pipeline-step .arrow{ color:var(--term-dim); }
+
+footer{ padding:100px 0 140px; text-align:center; }
+footer p{ color:rgba(255,255,255,0.65); font-size:12.5px; font-family:var(--font-mono); }
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .console-body .line{ opacity:1 !important; }
+}
+
+/* ---------------- PRINT (CV) ---------------- */
+@media print{
+  .wallpaper,.menubar,.dock-wrap,.sticky-note,footer{ display:none !important; }
+  body{ background:#fff !important; color:#000 !important; }
+  .window{ box-shadow:none !important; border:1px solid #ccc !important; break-inside:avoid; }
+  .win-terminal, .win-terminal *{ background:#fff !important; color:#000 !important; }
+  .win-terminal .window-bar, .win-light .window-bar, .win-browser .window-bar{ background:#f0f0f0 !important; }
+  .traffic span{ background:#bbb !important; }
+  section{ padding:16px 0 !important; }
+  .desktop{ padding-top:20px !important; }
+  .section-head h2, .section-head p{ color:#000 !important; }
+  a{ color:#000 !important; text-decoration:underline; }
+  .log-entry h3, .log-entry ul, .log-org, .log-ts{ color:#000 !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="wallpaper"></div>
+
+<div class="menubar">
+  <div class="menubar-inner">
+    <a href="#top" class="menubar-brand"><span class="dot"></span>Arturo Rangel</a>
+    <nav class="menu-items">
+      <a href="#perfil">Perfil</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#desarrollo">Desarrollo</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#educacion">Educación</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="menubar-right">
+      <span class="hire-pill"><span class="hire-dot"></span>Disponible para contratación</span>
+      <span id="clock"></span>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- DESKTOP / HERO -->
+  <section class="desktop wrap">
+    <div class="desktop-grid">
+      <div>
+        <div class="eyebrow">Ingeniero Desarrollador de software e Sistemas· Monterrey, N.L.</div>
+        <h1 class="headline">Soporte técnico de día.<br>Sistemas <span class="accent">que construyo</span> de fondo.</h1>
+        <p class="hero-copy">+3 años resolviendo tickets, redes y servidores en producción — y la misma experiencia desarrollando el software que ese soporte técnico termina necesitando. Este portafolio funciona como mi CV: toda mi experiencia, habilidades y proyectos reales, listos para revisión.</p>
+        <div class="cta-row">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#" class="btn btn-glass" onclick="window.print(); return false;">Descargar CV (PDF)</a>
+        </div>
+      </div>
+
+      <div class="window win-terminal">
+        <div class="window-bar">
+          <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+          <div class="window-title">arturo@sistemas — zsh</div>
+        </div>
+        <div class="console-body" id="console-body">
+          <div class="line"><span class="prompt">arturo@sistemas:~$</span> status --check</div>
+          <div class="line"><span class="ok">[OK]</span> Help desk / gestión de tickets</div>
+          <div class="line"><span class="ok">[OK]</span> Soporte remoto (AnyDesk)</div>
+          <div class="line"><span class="ok">[OK]</span> Redes LAN/WAN y Windows Server</div>
+          <div class="line"><span class="ok">[OK]</span> Microsoft 365 / dominios / DNS</div>
+          <div class="line"><span class="ok">[OK]</span> Desarrollo PHP · JS · MySQL</div>
+          <div class="line"><span class="ok">[OK]</span> Automatización de procesos</div>
+          <div class="line">tiempo de respuesta operativo: <span class="ok">-35%</span></div>
+          <div class="line">sistema listo para nueva posición.<span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-note">
+      <h4>📌 datos rápidos</h4>
+      <div class="srow"><span class="snum">+3</span>años de experiencia</div>
+      <div class="srow"><span class="snum">35%</span>↓ tiempo de respuesta</div>
+      <div class="srow"><span class="snum">40%</span>↓ riesgos de seguridad</div>
+    </div>
+  </section>
+
+
+  <!-- FOTO PERSONAL -->
+  <section id="foto" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Presentación profesional</div>
+      <h2>foto-perfil.jpg</h2>
+      <p>Un espacio integrado al mismo estilo visual del portafolio para mostrar tu fotografía profesional.</p>
+    </div>
+    <div class="window win-light">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Vista previa — foto-arturo.jpg</div>
+      </div>
+      <div class="profile-photo-body">
+        <!-- Coloca tu fotografía en la misma carpeta del HTML con el nombre: foto-arturo.jpg -->
+        <div class="profile-photo-frame">
+          <img src="foto.PNG" alt="Fotografía profesional de Arturo Rangel Coronado">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+            <strong>Coloca aquí tu fotografía</strong>
+            <span>Guárdala junto al archivo HTML con este nombre:</span>
+            <code>foto-arturo.jpg</code>
+          </div>
+        </div>
+        <div class="profile-photo-copy">
+          <span class="photo-status">Perfil profesional</span>
+          <h3>Arturo Rangel Coronado</h3>
+          <p>Ingeniero en Sistemas enfocado en soporte técnico, administración de infraestructura y desarrollo de soluciones digitales a la medida. La fotografía se ajustará automáticamente al recuadro sin deformarse.</p>
+          <div class="tag-list">
+            <span class="tag">Ingeniero en Sistemas</span>
+            <span class="tag">Soporte técnico</span>
+            <span class="tag">Desarrollo de software</span>
+            <span class="tag">Monterrey, N.L.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFIL -->
+  <section id="perfil" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Perfil</div>
+      <h2>perfil.txt</h2>
+    </div>
+    <div class="window win-light">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Editor de texto — perfil.txt</div>
+      </div>
+      <div class="perfil-body">
+        <p>Soy Ingeniero en Sistemas con base en Monterrey. Mi trabajo diario ha sido <strong>help desk, tickets, mantenimiento preventivo y soporte remoto</strong> para empresas y organismos de gobierno — el tipo de trabajo donde importa resolver rápido y con buena actitud de servicio.</p>
+        <p>Cuando la empresa lo requiere, asumo responsabilidades de mayor alcance: <strong>administración de servidores, seguridad informática y coordinación de proyectos tecnológicos</strong>. Y como desarrollador freelance, construyo las herramientas que ese soporte técnico termina necesitando: sitios web, CRMs, cotizadores y sistemas de automatización con PHP, JavaScript y MySQL.</p>
+        <p>Busco una posición de soporte técnico o administración de sistemas donde pueda aportar valor desde el primer día, con proyección de crecimiento a mediano plazo.</p>
+        <div class="stat-row">
+          <div class="stat-box"><div class="n">+3</div><div class="l">años de experiencia</div></div>
+          <div class="stat-box"><div class="n">35%</div><div class="l">menos tiempo de respuesta</div></div>
+          <div class="stat-box"><div class="n">40%</div><div class="l">menos riesgos operativos</div></div>
+          <div class="stat-box"><div class="n">25%</div><div class="l">optimización de inventarios</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Competencias técnicas</div>
+      <h2>Finder — /competencias</h2>
+    </div>
+    <div class="window win-light">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Finder — 4 carpetas</div>
+      </div>
+      <div class="finder-body">
+        <div class="finder-grid">
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#ffcf6b"/></svg>
+            <h3>Soporte &amp; Sistemas</h3>
+            <div class="tag-list">
+              <span class="tag">Help desk</span><span class="tag">Tickets</span><span class="tag">AnyDesk</span>
+              <span class="tag">Mant. preventivo</span><span class="tag">Microsoft 365</span><span class="tag">ERP/CRM</span>
+            </div>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#7fd6f0"/></svg>
+            <h3>Infraestructura &amp; Redes</h3>
+            <div class="tag-list">
+              <span class="tag">Windows Server</span><span class="tag">LAN/WAN</span><span class="tag">DNS</span>
+              <span class="tag">VPN</span><span class="tag">Impresoras IP</span><span class="tag">Cableado</span>
+            </div>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#f89b9b"/></svg>
+            <h3>Gestión de TI &amp; Liderazgo</h3>
+            <div class="tag-list">
+              <span class="tag">Seguridad</span><span class="tag">Políticas TI</span>
+              <span class="tag">Proveedores</span><span class="tag">Inventarios</span><span class="tag">Proyectos</span>
+            </div>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#9ff0c0"/></svg>
+            <h3>Desarrollo &amp; Datos</h3>
+            <div class="tag-list">
+              <span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">MySQL/SQL</span>
+              <span class="tag">C#</span><span class="tag">Python</span><span class="tag">Automatización</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Proyectos</div>
+      <h2>Sistemas en producción</h2>
+      <p style="color:rgba(255,255,255,0.75)">Plataformas reales, desarrolladas para gobierno, empresas y negocios locales.</p>
+    </div>
+
+    <div class="window win-browser project-window">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="addr-bar"><span class="lock">🔒</span> viviendanl.gob.mx/ayudamosatuhogar</div>
+      </div>
+      <div class="project-body">
+        <div class="project-visual">
+          <div class="mock-page">
+            <div class="mock-hero" style="background:linear-gradient(135deg,#2a4e6e,#4c7ea8);"></div>
+            <div class="mock-content">
+              <div class="mock-bar" style="width:80%"></div>
+              <div class="mock-bar" style="width:55%"></div>
+              <div class="mock-bar" style="width:70%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Ayudamos a tu Hogar</h3>
+          <span class="role">Instituto de la Vivienda — Gobierno de Monterrey</span>
+          <p class="desc">Plataforma web de un programa social de vivienda. Desarrollo y mantenimiento del sistema como parte de las labores de administración de sistemas y desarrollo de software del organismo.</p>
+          <div class="project-links">
+            <a class="link-chip" href="https://viviendanl.gob.mx/ayudamosatuhogar/" target="_blank" rel="noopener">Ver sitio ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window win-browser project-window">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="addr-bar"><span class="lock">🔒</span> eresolar.mx</div>
+      </div>
+      <div class="project-body">
+        <div class="project-visual">
+          <div class="mock-page">
+            <div class="mock-hero" style="background:linear-gradient(135deg,#8a5a1e,#e08a2c);"></div>
+            <div class="mock-content">
+              <div class="mock-bar" style="width:90%"></div>
+              <div class="mock-bar" style="width:60%"></div>
+              <div class="mock-bar" style="width:75%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Ecosistema ERE Solar</h3>
+          <span class="role">Sitio comercial · CRM · sistema interno</span>
+          <p class="desc">Suite completa para una empresa de energía solar: sitio público con cotizador y mapa de cobertura, un CRM para dar seguimiento a prospectos, y un sistema interno con acceso por roles para el equipo de ventas.</p>
+          <div class="project-links">
+            <a class="link-chip" href="https://eresolar.mx/" target="_blank" rel="noopener">Sitio público ↗</a>
+            <a class="link-chip" href="https://crm.eresolar.mx/" target="_blank" rel="noopener">CRM ↗</a>
+            <a class="link-chip" href="https://ere.eresolar.mx/login.php" target="_blank" rel="noopener">Sistema interno ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window win-browser project-window">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="addr-bar"><span class="lock">🔒</span> rickandrob.com</div>
+      </div>
+      <div class="project-body">
+        <div class="project-visual">
+          <div class="mock-page">
+            <div class="mock-hero" style="background:linear-gradient(135deg,#c0453a,#3a6fc0);"></div>
+            <div class="mock-content">
+              <div class="mock-bar" style="width:85%"></div>
+              <div class="mock-bar" style="width:65%"></div>
+              <div class="mock-bar" style="width:45%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Rick and Rob Barber Shop</h3>
+          <span class="role">Sitio + sistema de citas multisucursal</span>
+          <p class="desc">Sitio de presentación con catálogo de servicios y galería, más un sistema de citas independiente por sucursal (Cananeas y La Huasteca) para que cada barbería administre su propia agenda.</p>
+          <div class="project-links">
+            <a class="link-chip" href="https://www.rickandrob.com/" target="_blank" rel="noopener">Sitio ↗</a>
+            <a class="link-chip" href="https://citascananeas.rickandrob.com/" target="_blank" rel="noopener">Citas — Cananeas ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS DE DESARROLLO -->
+  <section id="desarrollo" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Servicios de desarrollo a la medida</div>
+      <h2>Del proceso manual a la herramienta digital</h2>
+      <p style="color:rgba(255,255,255,0.75)">Sistemas web, automatización y reportes ejecutivos — diseñados según el proceso real de cada negocio, no plantillas cerradas.</p>
+    </div>
+
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">enfoque.txt — tecnología que se adapta al negocio</div>
+      </div>
+      <div class="perfil-body" style="padding:28px 32px;">
+        <p>No se ofrece una plantilla cerrada. Cada solución se diseña según el proceso real, el giro y las necesidades de cada cliente.</p>
+        <p>El objetivo es convertir procesos manuales, dispersos o lentos en herramientas digitales claras, controladas y fáciles de usar.</p>
+        <div class="value-grid">
+          <div class="value-card"><span class="value-code">01 / ORDENAR</span><h3>Ordenar</h3><p>Información clara y centralizada.</p></div>
+          <div class="value-card"><span class="value-code">02 / AUTOMATIZAR</span><h3>Automatizar</h3><p>Menos tareas repetitivas.</p></div>
+          <div class="value-card"><span class="value-code">03 / CONTROLAR</span><h3>Controlar</h3><p>Permisos, seguimiento y trazabilidad.</p></div>
+          <div class="value-card"><span class="value-code">04 / PRESENTAR</span><h3>Presentar</h3><p>Reportes listos para decidir.</p></div>
+        </div>
+        <p style="margin-top:20px;margin-bottom:0;"><strong>Cada proyecto se plantea para resolver un problema concreto:</strong> más control, mejor imagen y menos trabajo operativo.</p>
+      </div>
+    </div>
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Finder — servicios principales</div>
+      </div>
+      <div class="finder-body">
+        <div class="finder-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#7fd6f0"/></svg>
+            <h3>Sistemas web a la medida</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Plataformas privadas para administrar procesos desde cualquier dispositivo.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#ffcf6b"/></svg>
+            <h3>Plataformas administrativas</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Control de actividades, registros, clientes, operaciones y documentos.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#9ff0c0"/></svg>
+            <h3>Automatización de procesos</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Flujos digitales para reducir trabajo repetitivo y errores operativos.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#f89b9b"/></svg>
+            <h3>Cotizaciones y PDF</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Documentos profesionales generados con datos, importes y condiciones.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#d9b8ff"/></svg>
+            <h3>Control de información</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Datos, historial y seguimiento centralizado.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#ffb1d8"/></svg>
+            <h3>Dashboards e indicadores</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Paneles visuales para medir avances, ventas, tareas y resultados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Finder — servicios complementarios</div>
+      </div>
+      <div class="finder-body">
+        <div class="finder-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#a9c6ff"/></svg>
+            <h3>Bases de datos</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Estructura, orden y resguardo de información empresarial.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#ffe08a"/></svg>
+            <h3>Usuarios y permisos</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Accesos por rol para administradores, equipos y colaboradores.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#bdf0d0"/></svg>
+            <h3>Páginas web empresariales</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Sitios modernos para presentar servicios y generar contacto.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#ffc7ad"/></svg>
+            <h3>Integraciones digitales</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Conexión con correo, WhatsApp y herramientas externas.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#c9c9f5"/></svg>
+            <h3>Mejora de sistemas existentes</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Corrección, rediseño, optimización y nuevas funciones.</p>
+          </div>
+          <div class="folder-card">
+            <svg class="folder-icon" viewBox="0 0 34 28" fill="none"><path d="M1 4a2 2 0 0 1 2-2h9l3 4h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4z" fill="#8ff0e8"/></svg>
+            <h3>Soporte y capacitación</h3>
+            <p style="font-size:12.5px;color:var(--paper-dim);">Acompañamiento básico para usar la solución con seguridad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">catalogo.txt — qué se puede desarrollar</div>
+      </div>
+      <div class="perfil-body" style="padding:28px 32px;">
+        <ul class="checklist">
+          <li>Desarrollo de sistemas web a la medida</li>
+          <li>Desarrollo de plataformas administrativas</li>
+          <li>Automatización de procesos operativos y administrativos</li>
+          <li>Digitalización de formatos, registros y reportes</li>
+          <li>Creación de formularios web personalizados</li>
+          <li>Paneles de control e indicadores ejecutivos</li>
+          <li>Generación automática de documentos en PDF</li>
+          <li>Control de clientes, proveedores, productos o servicios</li>
+          <li>Sistemas de cotización, órdenes, solicitudes y reportes</li>
+          <li>Control de usuarios, permisos y accesos</li>
+          <li>Diseño y administración de bases de datos</li>
+          <li>Integración con correo, WhatsApp y herramientas externas</li>
+          <li>Desarrollo de páginas web empresariales</li>
+          <li>Mantenimiento y mejora de sistemas existentes</li>
+          <li>Soporte técnico y capacitación básica para usuarios</li>
+          <li>Herramientas para seguimiento comercial u operativo</li>
+          <li>Sistemas multiusuario por áreas, roles o sucursales</li>
+          <li>Reportes para dirección, ventas, operación y administración</li>
+        </ul>
+        <p style="margin-top:20px;margin-bottom:0;"><strong>El cliente no compra código:</strong> compra orden, control, ahorro de tiempo y una herramienta que se ajuste a su forma de trabajar.</p>
+      </div>
+    </div>
+
+
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Finder — soluciones de punta a punta</div>
+      </div>
+      <div class="finder-body">
+        <div class="section-head dark" style="margin-bottom:22px;">
+          <div class="eyebrow dark">Proyectos completos</div>
+          <h2>Soluciones que pueden entregarse de punta a punta</h2>
+          <p>Proyectos integrales que combinan usuarios, base de datos, módulos, reportes, documentos e indicadores.</p>
+        </div>
+        <div class="solution-grid">
+          <div class="solution-card"><span class="solution-label">ADMINISTRACIÓN</span><h3>Sistema administrativo integral</h3><p>Clientes, proveedores, servicios, usuarios, reportes, documentos y control interno.</p></div>
+          <div class="solution-card"><span class="solution-label">COMERCIAL</span><h3>Plataforma comercial</h3><p>Prospectos, seguimiento, cotizaciones, agenda, vendedores y tablero de resultados.</p></div>
+          <div class="solution-card"><span class="solution-label">COTIZACIÓN</span><h3>Sistema de cotizaciones</h3><p>Captura de datos, cálculo automático, condiciones comerciales, PDF e historial.</p></div>
+          <div class="solution-card"><span class="solution-label">OPERACIÓN</span><h3>Control operativo</h3><p>Órdenes, solicitudes, evidencias, responsables, estatus y trazabilidad del proceso.</p></div>
+          <div class="solution-card"><span class="solution-label">PORTAL PRIVADO</span><h3>Portal interno empresarial</h3><p>Accesos por rol, registros privados, archivos, avisos, consultas y administración.</p></div>
+          <div class="solution-card"><span class="solution-label">DIRECCIÓN</span><h3>Dashboard ejecutivo</h3><p>Indicadores, gráficas y reportes para dirección, ventas y operación.</p></div>
+        </div>
+        <p style="font-size:13px;color:var(--paper-dim);margin-top:18px;text-align:center;"><strong style="color:var(--paper-ink);">Estos proyectos pueden iniciar pequeños y crecer por etapas, conservando orden y estructura.</strong></p>
+      </div>
+    </div>
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Finder — tecnología utilizada</div>
+      </div>
+      <div class="finder-body">
+        <div class="tech-grid">
+          <div class="tech-item"><span class="tech-badge" style="background:#777bb4;">PHP</span><div><h4>PHP</h4><p>Backend, sesiones, usuarios y módulos privados.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#c8a415;">JS</span><div><h4>JavaScript</h4><p>Interactividad, validaciones y experiencia de usuario.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#e34f26;">5</span><div><h4>HTML5</h4><p>Estructura de páginas, paneles y formularios.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#264de4;">CSS</span><div><h4>CSS</h4><p>Diseño visual, estilos responsivos y modo claro/oscuro.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#00618a;">SQL</span><div><h4>MySQL</h4><p>Bases de datos, reportes, historiales y permisos.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#6b4fd6;">AI</span><div><h4>Inteligencia artificial</h4><p>Automatización, asistentes y mejora de procesos.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#0866ff;">M</span><div><h4>Meta Business</h4><p>Presencia digital y herramientas comerciales.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#25d366;">WA</span><div><h4>WhatsApp Business</h4><p>Contacto, seguimiento y notificaciones al cliente.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#003d8f; font-size:8.5px;">IONOS</span><div><h4>IONOS</h4><p>Dominio, hosting, correo, SSL y publicación web.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#2b323a;">{ }</span><div><h4>APIs e integraciones</h4><p>Conexión con servicios y sistemas externos.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#d93831;">PDF</span><div><h4>Documentos PDF</h4><p>Cotizaciones, propuestas, órdenes y reportes.</p></div></div>
+          <div class="tech-item"><span class="tech-badge" style="background:#4a545c;">📱</span><div><h4>Diseño responsivo</h4><p>Uso en computadora, tablet y celular.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="window win-light" style="margin-bottom:22px;">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">resultados.log — beneficios para el cliente</div>
+      </div>
+      <div class="finder-body">
+        <div class="section-head dark" style="margin-bottom:22px;">
+          <div class="eyebrow dark">Resultados</div>
+          <h2>Beneficios para el cliente</h2>
+          <p>La tecnología debe ayudar al negocio a trabajar mejor, no complicarlo.</p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit-card"><strong>+ Control</strong><span>Información centralizada</span></div>
+          <div class="benefit-card"><strong>- Errores</strong><span>Menos capturas manuales</span></div>
+          <div class="benefit-card"><strong>+ Rapidez</strong><span>Procesos más ágiles</span></div>
+          <div class="benefit-card"><strong>+ Imagen</strong><span>Documentos profesionales</span></div>
+          <div class="benefit-card"><strong>+ Datos</strong><span>Indicadores para decidir</span></div>
+          <div class="benefit-card"><strong>+ Orden</strong><span>Seguimiento claro</span></div>
+        </div>
+        <div class="ideal-box">
+          <h3>Ideal para</h3>
+          <p>Empresas de servicios, comercios, industrias, despachos, instaladores, equipos de ventas y negocios que buscan dejar atrás procesos desordenados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="window win-terminal">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Terminal — pipeline.sh</div>
+      </div>
+      <div class="console-body">
+        <div class="line show"><span class="prompt">arturo@sistemas:~$</span> ./pipeline.sh --run</div>
+        <div class="line show pipeline-step"><span class="n">[1/4]</span> <span class="k">entender</span> <span class="arrow">→</span> revisar la necesidad y el proceso actual</div>
+        <div class="line show pipeline-step"><span class="n">[2/4]</span> <span class="k">proponer</span> <span class="arrow">→</span> definir alcance, módulos y prioridades</div>
+        <div class="line show pipeline-step"><span class="n">[3/4]</span> <span class="k">desarrollar</span> <span class="arrow">→</span> construir la solución, con pruebas y ajustes</div>
+        <div class="line show pipeline-step"><span class="n">[4/4]</span> <span class="k">entregar</span> <span class="arrow">→</span> capacitar al usuario y dejar el sistema operando</div>
+        <div class="line show">build <span class="ok">successful</span> — listo para operar.<span class="cursor"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experiencia laboral</div>
+      <h2>experiencia.log</h2>
+    </div>
+    <div class="window win-terminal">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Terminal — tail -f experiencia.log</div>
+      </div>
+      <div class="log-body">
+
+        <div class="log-entry">
+          <span class="log-ts">[2024-10-01 → 2025-01-31]</span> <span class="log-tag">JOB_ACTIVE</span>
+          <h3>Administrador de Sistemas / Desarrollo de Software</h3>
+          <span class="log-org">Búho Logistic · Por contrato</span>
+          <ul>
+            <li>Atención diaria a usuarios finales y mantenimiento preventivo, reduciendo tiempos de respuesta operativos en 35%.</li>
+            <li>Gestión de tickets, incidencias de hardware/software y soporte remoto (help desk).</li>
+            <li>Administración de servidores Windows Server y arquitecturas de red.</li>
+            <li>Administración de Microsoft 365, correos corporativos, dominios, DNS y antivirus corporativo.</li>
+            <li>Liderazgo de proyectos tecnológicos con equipos multidisciplinarios.</li>
+            <li>Implementación de análisis de datos y georreferencias para toma de decisiones.</li>
+          </ul>
+        </div>
+
+        <div class="log-entry">
+          <span class="log-ts">[2023-07-01 → 2024-11-30]</span> <span class="log-tag">JOB_COMPLETE</span>
+          <h3>Administrador de Sistemas &amp; Desarrollo de Software</h3>
+          <span class="log-org">Instituto de la Vivienda — Gobierno de Monterrey · Por contrato</span>
+          <ul>
+            <li>Mantenimiento preventivo de equipos y soporte directo a usuarios finales.</li>
+            <li>Administración y mantenimiento de servidores, redes y hardware crítico.</li>
+            <li>Procesos de respaldo y recuperación de datos.</li>
+            <li>Supervisión de inventarios de hardware y software, optimizando recursos en 25%.</li>
+            <li>Diseño de políticas de seguridad que redujeron riesgos operativos en 40%.</li>
+            <li>Gestión de contratos de internet, telefonía y licencias de software.</li>
+          </ul>
+        </div>
+
+        <div class="log-entry">
+          <span class="log-ts">[continuo]</span> <span class="log-tag">JOB_BACKGROUND</span>
+          <h3>Ingeniero Desarrollador de Software / Sistemas</h3>
+          <span class="log-org">Freelancer · Proyectos por contrato</span>
+          <ul>
+            <li>Automatización de procesos y desarrollo de software a la medida (PHP, JavaScript, MySQL).</li>
+            <li>Respaldo de bases de datos y soporte técnico a clientes.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCACION -->
+  <section id="educacion" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Educación</div>
+      <h2>Universidad Tecnológica de Santa Catarina</h2>
+    </div>
+    <div class="window win-light">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Certificados</div>
+      </div>
+      <div class="edu-body">
+        <div class="edu-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+          <div><h3>Ingeniería en Desarrollo y Gestión de Software</h3><span>Titulado</span></div>
+        </div>
+        <div class="edu-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+          <div><h3>TSU en Desarrollo de Software</h3><span>Titulado</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Hablemos de tu vacante o proyecto</h2>
+    </div>
+    <div class="window win-light">
+      <div class="window-bar">
+        <div class="traffic"><span class="c"></span><span class="m"></span><span class="z"></span></div>
+        <div class="window-title">Mensajes</div>
+      </div>
+      <div class="chat-body">
+        <div class="bubble">Hola 👋 Soy Arturo. Si buscas alguien para soporte técnico, administración de sistemas o desarrollo a la medida, escríbeme — respondo rápido.</div>
+        <div class="cta-row" style="margin-bottom:22px;">
+          <a href="https://wa.me/528184663825" class="btn btn-primary">WhatsApp</a>
+          <a href="mailto:arangelc30@hotmail.com" class="btn" style="background:#fff;border:1px solid var(--paper-line);color:var(--paper-ink);">Enviar correo</a>
+        </div>
+        <div class="contact-methods">
+          <a class="contact-method" href="tel:+528184663825">
+            <span class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span><div class="cm-label">Teléfono</div><div class="cm-value">81 8466 3825</div></span>
+          </a>
+          <a class="contact-method" href="mailto:arangelc30@hotmail.com">
+            <span class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
+            <span><div class="cm-label">Correo</div><div class="cm-value">arangelc30@hotmail.com</div></span>
+          </a>
+          <a class="contact-method" href="https://www.google.com/maps/search/Monterrey,+Nuevo+Le%C3%B3n" target="_blank" rel="noopener">
+            <span class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span><div class="cm-label">Ubicación</div><div class="cm-value">Monterrey, N.L.</div></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Arturo Rangel Coronado — Ingeniero en Sistemas · sistema operativo</p>
+</footer>
+
+<div class="dock-wrap">
+  <div class="dock">
+    <a href="#top" title="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></a>
+    <a href="#perfil" title="Perfil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+    <a href="#servicios" title="Servicios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></a>
+    <a href="#proyectos" title="Proyectos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg></a>
+    <a href="#experiencia" title="Experiencia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></a>
+    <a href="#educacion" title="Educación"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></a>
+    <a href="#contacto" title="Contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    <div class="dock-sep"></div>
+    <a href="#" class="cv-btn" title="Descargar CV" onclick="window.print(); return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+  </div>
+</div>
+
+<script>
+  // boot console typing
+  (function(){
+    var lines = document.querySelectorAll('#console-body .line');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ lines.forEach(function(l){ l.classList.add('show'); }); }
+    else{ lines.forEach(function(line, i){ setTimeout(function(){ line.classList.add('show'); }, 240*i + 200); }); }
+  })();
+
+  // live clock
+  function updateClock(){
+    var el = document.getElementById('clock');
+    if(!el) return;
+    var d = new Date();
+    var days=['dom','lun','mar','mié','jue','vie','sáb'];
+    var h = d.getHours().toString().padStart(2,'0');
+    var m = d.getMinutes().toString().padStart(2,'0');
+    el.textContent = days[d.getDay()]+' '+h+':'+m;
+  }
+  updateClock();
+  setInterval(updateClock, 15000);
+
+  // active menu highlight
+  (function(){
+    var sections = document.querySelectorAll('main section[id]');
+    var links = document.querySelectorAll('.menu-items a');
+    if(!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('active'); });
+          var match = document.querySelector('.menu-items a[href="#'+entry.target.id+'"]');
+          if(match) match.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(function(s){ obs.observe(s); });
+  })();
+</script>
+
+</body>
+</html>
